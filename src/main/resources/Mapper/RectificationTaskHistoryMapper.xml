@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunjinrong.mapper.RectificationTaskHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.yunjinrong.entity.RectificationTaskHistory">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="enterprise_msg_id" jdbcType="VARCHAR" property="enterpriseMsgId" />
+    <result column="point" jdbcType="VARCHAR" property="point" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="approval_result" jdbcType="VARCHAR" property="approvalResult" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, enterprise_msg_id, point, user_id, approval_result, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rectification_task_history
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from rectification_task_history
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yunjinrong.entity.RectificationTaskHistory">
+    insert into rectification_task_history (id, enterprise_msg_id, point, 
+      user_id, approval_result, create_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{enterpriseMsgId,jdbcType=VARCHAR}, #{point,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{approvalResult,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunjinrong.entity.RectificationTaskHistory">
+    insert into rectification_task_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="enterpriseMsgId != null">
+        enterprise_msg_id,
+      </if>
+      <if test="point != null">
+        point,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="approvalResult != null">
+        approval_result,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseMsgId != null">
+        #{enterpriseMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="point != null">
+        #{point,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalResult != null">
+        #{approvalResult,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunjinrong.entity.RectificationTaskHistory">
+    update rectification_task_history
+    <set>
+      <if test="enterpriseMsgId != null">
+        enterprise_msg_id = #{enterpriseMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="point != null">
+        point = #{point,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalResult != null">
+        approval_result = #{approvalResult,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunjinrong.entity.RectificationTaskHistory">
+    update rectification_task_history
+    set enterprise_msg_id = #{enterpriseMsgId,jdbcType=VARCHAR},
+      point = #{point,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      approval_result = #{approvalResult,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
