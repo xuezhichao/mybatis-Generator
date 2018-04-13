@@ -5,7 +5,7 @@ import java.util.Date;
 public class RectificationTaskHistory {
     private String id;
 
-    /**企业整改id*/
+    /**企业整改热发热舒舒服服的士大夫*/
     private String enterpriseMsgId;
 
     /**审批节点*/
